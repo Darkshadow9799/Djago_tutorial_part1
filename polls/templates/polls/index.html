@@ -1,13 +1,3 @@
-<html>
-<head>
-  <style media="screen">
-    #re{
-      margin:0% 40%;
-    }
-  </style>
-</head>
-<body id="re">
-<fieldset>
 {% if latest_question %}
   <ul>
     {% for question in latest_question%}
@@ -17,6 +7,3 @@
 {% else %}
   <p>No polls available</p>
 {% endif %}
-</fieldset>
-</body>
-</html>

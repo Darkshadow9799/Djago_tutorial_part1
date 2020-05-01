@@ -1,13 +1,3 @@
-<html>
-<head>
-  <style media="screen">
-    #re{
-      margin:0% 40%;
-    }
-  </style>
-</head>
-<body id="re">
-<fieldset>
 <h1>{{ question.question_text }}</h1>
 <ul>
   {% for choice in question.choice_set.all %}
@@ -15,6 +5,3 @@
   {% endfor %}
 </ul>
 <a href="{% url 'polls:detail' question.id %}">Vote again</a>
-</fieldset>
-</body>
-</html>
