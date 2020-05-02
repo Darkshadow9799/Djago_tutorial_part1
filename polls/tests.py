@@ -4,11 +4,9 @@ from django.utils import timezone
 from .models import Question
 from django.urls import reverse
 # Create your tests here.
-
 def create_question(question_text,days):
     time=timezone.now()+datetime.timedelta(days=days)
     return Question.objects.create(question_text=question_text,pub_date=time)
-
 class QuestionIndexViewTests(TestCase):
     def test_no_question(self):
         response=self.client.get(reverse('polls:index'))
@@ -34,7 +32,6 @@ class QuestionIndexViewTests(TestCase):
         create_question(question_text="Past question 2",days=-5)
         response=self.client.get(reverse('polls:index'))
         self.assertQuerysetEqual(response.context['latest_question'],['<Question: Past question 2>','<Question: Past question 1>'])
-
 class QuestionDetailViewTests(TestCase):
     def test_future_question(self):
         future_question=create_question(question_text='Future question',days=5)
@@ -46,7 +43,6 @@ class QuestionDetailViewTests(TestCase):
         url=reverse('polls:detail',args=(past_question.id,))
         response=self.client.get(url)
         self.assertContains(response,past_question.question_text)
-
 class QuestionModelTests(TestCase):
     def test_was_published_recently_with_future_question(self):
         time=timezone.now() + datetime.timedelta(days=30)
